@@ -1,0 +1,35 @@
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-01-01 13:00:00`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+type Event {
+    id: ID!
+    name: String!
+    period_start: Date!
+    period_end: Date!
+    days: [EventDay!]
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type EventDay {
+    id: ID!
+    event_id: Int!
+    event: Event!
+    dow: Int!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+
+type Query {
+    events: [Event!] @all
+    event(id: ID @eq): Event @find(model: "App\\Event")
+}
+
+type Mutation {
+    createEvent(name: String!, period_start: Date!, period_end: Date!, days: [EventDays!]!): Event! @create
+    updateEvent(id: ID!, name: String, period_start: Date, period_end: Date, days: [EventDays!]): Event @update
+}
