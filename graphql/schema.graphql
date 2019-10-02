@@ -30,6 +30,6 @@ type Query {
 }
 
 type Mutation {
-    createEvent(name: String!, period_start: Date!, period_end: Date!, days: [EventDays!]!): Event! @create
-    updateEvent(id: ID!, name: String, period_start: Date, period_end: Date, days: [EventDays!]): Event @update
+    createEvent(name: String!, period_start: Date!, period_end: Date!, days: [Int!]!): Event!
+    updateEvent(id: ID!, name: String, period_start: Date, period_end: Date, days: [Int!]): Event @update
 }
