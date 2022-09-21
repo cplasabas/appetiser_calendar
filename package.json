@@ -28,6 +28,6 @@
         "vue": "^2.6.10",
         "vue-apollo": "^3.0.0-rc.7",
         "vue-moment": "^4.0.0",
-        "vuetify": "^2.1.0"
+        "vuetify": "^2.6.10"
     }
 }
